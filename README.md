@@ -39,28 +39,3 @@ the **maximum action-value in the next state**, assuming greedy behavior in the 
 This single detail is the defining difference between **Q-learning and SARSA**.
 
 ---
-
-\section*{Q-learning Update Rule}
-
-For a transition:
-\[
-(s, a) \rightarrow r \rightarrow s'
-\]
-
-the Q-learning update is:
-\[
-Q(s, a) \leftarrow Q(s, a) + \alpha \left( r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right)
-\]
-
-where:
-\begin{itemize}
-    \item $\alpha \in (0,1]$ is the learning rate
-    \item $\gamma \in [0,1)$ is the discount factor
-    \item $\max_{a'} Q(s', a')$ is the greedy action-value estimate of the next state
-\end{itemize}
-
-This update is \textbf{off-policy} because the target assumes greedy action selection,
-independent of the behavior policy used to generate actions.
-
-
----
