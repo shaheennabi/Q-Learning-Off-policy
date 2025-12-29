@@ -40,29 +40,27 @@ This single detail is the defining difference between **Q-learning and SARSA**.
 
 ---
 
-## Q-learning update rule
+\section*{Q-learning Update Rule}
 
 For a transition:
-
 \[
-(s, a) \;\rightarrow\; r \;\rightarrow\; s'
+(s, a) \rightarrow r \rightarrow s'
 \]
 
 the Q-learning update is:
-
 \[
-Q(s, a) \leftarrow Q(s, a) + \alpha
-\Big[
-r + \gamma \max_{a'} Q(s', a') - Q(s, a)
-\Big]
+Q(s, a) \leftarrow Q(s, a) + \alpha \left( r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right)
 \]
 
 where:
+\begin{itemize}
+    \item $\alpha \in (0,1]$ is the learning rate
+    \item $\gamma \in [0,1)$ is the discount factor
+    \item $\max_{a'} Q(s', a')$ is the greedy action-value estimate of the next state
+\end{itemize}
 
-- \( \alpha \in (0, 1] \) is the learning rate  
-- \( \gamma \in [0, 1) \) is the discount factor  
-- \( \max_{a'} Q(s', a') \) represents the greedy action-value estimate in the next state  
+This update is \textbf{off-policy} because the target assumes greedy action selection,
+independent of the behavior policy used to generate actions.
 
-This update is **off-policy** because the target assumes greedy behavior,  
-regardless of how the action \( a \) was actually selected.
+
 ---
